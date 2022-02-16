@@ -78,6 +78,7 @@ export interface IOrderSdk {
 
 export interface IBalanceSdk {
 	getBalance: IGetBalance
+	convert: any
 }
 
 export type IRaribleInternalSdk = Omit<IRaribleSdk, "order" | "nft" | "apis" | "wallet"> & {

@@ -6,4 +6,5 @@ export const prodConfig: RaribleSdkConfig = {
 	flowEnv: "mainnet",
 	tezosNetwork: "mainnet",
 	polygonNetwork: "polygon",
+	immutableXNetwork: "prod",
 }

@@ -2,6 +2,7 @@ import type { Ethereum } from "@rarible/ethereum-provider"
 import type { Fcl } from "@rarible/fcl-types"
 import { BlockchainGroup } from "@rarible/api-client"
 import type { TezosProvider } from "@rarible/tezos-sdk"
+import type { Link } from "@imtbl/imx-sdk"
 import type { AbstractWallet, UserSignature } from "./domain"
 
 export class EthereumWallet<T extends Ethereum = Ethereum> implements AbstractWallet {
@@ -93,6 +94,29 @@ export class TezosWallet implements AbstractWallet {
 		return {
 			signature: result.signature,
 			publicKey: `${result.edpk}_${result.prefix}`,
+		}
+	}
+}
+
+export class ImmutableXWallet implements AbstractWallet {
+	readonly blockchain = "IMMUTABLE" //todo import enum from item
+
+	constructor(public readonly provider: Link) {
+	}
+
+	async signPersonalMessage(message: string): Promise<UserSignature> {
+		const publicKey = ""//await this.provider.getPublicKey()
+		if (publicKey === undefined) {
+			throw new Error("Public key undefined")
+		}
+
+		const { result } = await this.provider.sign({
+			message,
+			description: message,
+		})
+		return {
+			signature: result,
+			publicKey,
 		}
 	}
 }

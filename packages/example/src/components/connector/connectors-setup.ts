@@ -13,7 +13,7 @@ import { TorusConnectionProvider } from "@rarible/connector-torus"
 import { WalletLinkConnectionProvider } from "@rarible/connector-walletlink"
 import { WalletConnectConnectionProvider } from "@rarible/connector-walletconnect"
 import type { IWalletAndAddress } from "@rarible/connector-helper"
-import { mapEthereumWallet, mapFlowWallet, mapTezosWallet } from "@rarible/connector-helper";
+import { mapEthereumWallet, mapFlowWallet, mapTezosWallet } from "@rarible/connector-helper"
 // import { FortmaticConnectionProvider } from "@rarible/connector-fortmatic"
 // import { PortisConnectionProvider } from "@rarible/connector-portis"
 
@@ -24,7 +24,7 @@ const ethereumRpcMap: Record<number, string> = {
 	4: "https://node-rinkeby.rarible.com",
 	17: "https://node-e2e.rarible.com",
 	137: "https://polygon-rpc.com",
-	80001: "https://rpc-mumbai.matic.today"
+	80001: "https://rpc-mumbai.matic.today",
 }
 
 const ethereumNetworkMap: Record<number, string> = {
@@ -33,7 +33,7 @@ const ethereumNetworkMap: Record<number, string> = {
 	4: "rinkeby",
 	17: "e2e",
 	137: "polygon",
-	80001: "mumbai"
+	80001: "mumbai",
 }
 
 function environmentToEthereumChainId(environment: RaribleSdkEnvironment) {
@@ -75,7 +75,7 @@ function environmentToTezosNetwork(environment: RaribleSdkEnvironment) {
 		case "prod":
 			return {
 				accessNode: "https://tezos-node.rarible.org",
-				network: TezosNetwork.MAINNET
+				network: TezosNetwork.MAINNET,
 			}
 		case "dev":
 		case "e2e":
@@ -83,7 +83,7 @@ function environmentToTezosNetwork(environment: RaribleSdkEnvironment) {
 		default:
 			return {
 				accessNode: "https://tezos-hangzhou-node.rarible.org",
-				network: TezosNetwork.HANGZHOUNET
+				network: TezosNetwork.HANGZHOUNET,
 			}
 	}
 }
@@ -109,13 +109,13 @@ export function getConnector(environment: RaribleSdkEnvironment) {
 
 	const mew = mapEthereumWallet(new MEWConnectionProvider({
 		networkId: ethChainId,
-		rpcUrl: ethereumRpcMap[ethChainId]
+		rpcUrl: ethereumRpcMap[ethChainId],
 	}))
 
 	const beacon: ConnectionProvider<"beacon", IWalletAndAddress> = mapTezosWallet(new BeaconConnectionProvider({
 		appName: "Rarible Test",
 		accessNode: tezosNetwork.accessNode,
-		network: tezosNetwork.network
+		network: tezosNetwork.network,
 	}))
 
 	const fcl = mapFlowWallet(new FclConnectionProvider({
@@ -123,22 +123,22 @@ export function getConnector(environment: RaribleSdkEnvironment) {
 		walletDiscovery: flowNetwork.walletDiscovery,
 		network: flowNetwork.network,
 		applicationTitle: "Rari Test",
-		applicationIcon: "https://rarible.com/favicon.png?2d8af2455958e7f0c812"
+		applicationIcon: "https://rarible.com/favicon.png?2d8af2455958e7f0c812",
 	}))
 
 	let torus = undefined
 	if (isEthNetwork) {
 		torus = mapEthereumWallet(new TorusConnectionProvider({
 			network: {
-				host: ethNetworkName
-			}
+				host: ethNetworkName,
+			},
 		}))
 	}
 
 	const walletLink = mapEthereumWallet(new WalletLinkConnectionProvider({
 		networkId: ethChainId,
 		estimationUrl: ethereumRpcMap[ethChainId],
-		url: ethereumRpcMap[ethChainId]
+		url: ethereumRpcMap[ethChainId],
 	}, {
 		appName: "Rarible",
 		appLogoUrl: "https://rarible.com/static/logo-500.static.png",

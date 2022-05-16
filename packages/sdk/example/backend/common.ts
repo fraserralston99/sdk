@@ -40,10 +40,6 @@ export async function initWallet(privateKey: string): Promise<EthereumWallet> {
 	) {
 		throw new Error("Provide ETHEREUM_RPC_URL, ETHEREUM_NETWORK_ID as environment variables!")
 	}
-	const provider = initNodeProvider(privateKey, {
-		rpcUrl: process.env["ETHEREUM_RPC_URL"],
-		networkId: +process.env["ETHEREUM_NETWORK_ID"],
-	})
 	const raribleEthers = new ethers.providers.JsonRpcProvider(process.env["ETHEREUM_RPC_URL"])
 
 	//@ts-ignore

@@ -2,20 +2,47 @@
 <html>
 <body>
 <script src="https://unpkg.com/@rarible/web3-ethereum@0.12.40-hotfix.3/umd/rarible-web3-ethereum.js" type="text/javascript"></script>
+<script src="../../../umd/rarible-ethers-ethereum.js" type="text/javascript"></script>
 <script src="https://unpkg.com/@rarible/sdk-wallet@0.8.46/umd/rarible-wallet-sdk.js" type="text/javascript"></script>
 <script src="https://unpkg.com/@rarible/sdk@0.8.46/umd/rarible-sdk.js" type="text/javascript"></script>
 <script src="https://unpkg.com/web3@1.6.0/dist/web3.min.js" type="text/javascript"></script>
+<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
 <script>
+  // import { ethers } from "ethers";
+  // import { EthersEthereum } from "@rarible/ethers-ethereum";
+  // import { EthereumWallet } from "@rarible/sdk-wallet";
+
   async function init() {
     const {ethereum} = window
     if (ethereum && ethereum.isMetaMask) {
-      const web3Ethereum = new window.raribleWeb3Ethereum.Web3Ethereum({ web3: new Web3(ethereum) })
-      const wallet = new window.raribleWalletSdk.EthereumWallet(web3Ethereum)
+      const raribleEthers = new ethers.providers.JsonRpcProvider("https://node-rinkeby.rarible.com")
+
+      //@ts-ignore
+      const wallet = new window.raribleEthersEthereum.EthersEthereum(new ethers.Wallet("98f2bbb2542a2bb3e18ca70c4c0bc7f5d408f02ef6f96d20106547e8a7196cf0", raribleEthers))
+      // return new EthereumWallet(raribleProvider)
+
+      console.log('w', wallet, !!wallet)
+      // const web3 = new Web3(new Web3.providers.HttpProvider("https://node-rinkeby.rarible.com"))
+      // web3.eth.accounts.wallet.add("0x98f2bbb2542a2bb3e18ca70c4c0bc7f5d408f02ef6f96d20106547e8a7196cf0");
+
+      // const account = await web3.eth.accounts.privateKeyToAccount("98f2bbb2542a2bb3e18ca70c4c0bc7f5d408f02ef6f96d20106547e8a7196cf0");
+      // await web3.eth.accounts.wallet.add(account);
+      // web3.eth.defaultAccount = account.address.toLowerCase()
+      // console.log('web3', web3)
+      // await window.ethereum.enable();
+
+      // const web3Ethereum = new Web3Ethereum({ web3 })
+      // const web3Ethereum = new window.raribleWeb3Ethereum.Web3Ethereum({
+      //   web3,
+      //   from: web3.eth.defaultAccount,
+      //   gas: 5000000
+      // })
+      // const wallet = new window.raribleWalletSdk.EthereumWallet(web3Ethereum)
 
       const env = "staging" // "dev" | "e2e" | "staging" | "prod"
       const raribleSdk = new window.raribleSdk.createRaribleSdk(wallet, env)
       const sellAction = await raribleSdk.order.sell({
-        itemId: "ETHEREUM:<YOUR_COLLECTION_ID>:<YOUR_ITEM_ID>"
+        itemId: "ETHEREUM:0x88b48f654c30e99bc2e4a1559b4dcf1ad93fa656:107815925331162638946912699502085937632525691841123028314428424936323670867969"
       })
       const sellOrderId = await sellAction.submit({
         amount: 1,

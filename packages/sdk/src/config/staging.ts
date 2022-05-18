@@ -6,5 +6,6 @@ export const stagingConfig: RaribleSdkConfig = {
 	flowEnv: "staging",
 	tezosNetwork: "hangzhou",
 	polygonNetwork: "mumbai",
+	solanaNetwork: "devnet",
 	immutableXNetwork: "staging",
 }

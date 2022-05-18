@@ -1,4 +1,4 @@
-import { toBigNumber, toContractAddress, toCurrencyId, toItemId, toUnionAddress } from "@rarible/types"
+import { toBigNumber, toCollectionId, toContractAddress, toCurrencyId, toItemId, toUnionAddress } from "@rarible/types"
 import BigNumber from "bignumber.js"
 import type { TezosXTZAssetType } from "@rarible/api-client"
 import { createRaribleSdk } from "../../index"
@@ -9,7 +9,7 @@ import { createTestWallet } from "./test/test-wallet"
 import { awaitForOwnership } from "./test/await-for-ownership"
 import { awaitForOrder } from "./test/await-for-order"
 
-describe("test tezos mint and sell", () => {
+describe.skip("test tezos mint and sell", () => {
 	const sellerWallet = createTestWallet(
 		"edskS143x9JtTcFUxE5UDT9Tajkx9hdLha9mQhijSarwsKM6fzBEAuMEttFEjBYL7pT4o5P5yRqFGhUmqEynwviMk5KJ8iMgTw"
 	)
@@ -25,13 +25,14 @@ describe("test tezos mint and sell", () => {
 	)
 	const nextBuyerSdk = createRaribleSdk(nextBuyerWallet, "dev", { logs: LogsLevel.DISABLED })
 
-	const eurTzContract = "KT1Rgf9RNW7gLj7JGn98yyVM34S4St9eudMC"
+	const eurTzContract = "KT1LJSq4mhyLtPKrncLXerwAF2Xvk7eU3KJX"
+	// const eurTzContract = "KT1NaRKxAGaoioX9CbzApaBjCYijcGHGfYJV"
 	let nftContract: string = "KT1EreNsT2gXRvuTUrpx6Ju4WMug5xcEpr43"
 	let mtContract: string = "KT1RuoaCbnZpMgdRpSoLfJUzSkGz1ZSiaYwj"
 
 	test.skip("sale NFT with XTZ", async () => {
 		const mintAndSellAction = await sellerSdk.nft.mintAndSell({
-			collectionId: toContractAddress(`TEZOS:${nftContract}`),
+			collectionId: toCollectionId(`TEZOS:${nftContract}`),
 		})
 
 		const mintResult = await mintAndSellAction.submit({
@@ -65,7 +66,7 @@ describe("test tezos mint and sell", () => {
 
 	test.skip("sale NFT with XTZ and with CurrencyId", async () => {
 		const mintAndSellAction = await sellerSdk.nft.mintAndSell({
-			collectionId: toContractAddress(`TEZOS:${nftContract}`),
+			collectionId: toCollectionId(`TEZOS:${nftContract}`),
 		})
 
 		const mintResult = await mintAndSellAction.submit({
@@ -96,25 +97,24 @@ describe("test tezos mint and sell", () => {
 		expect(ownership.value).toBe("1")
 	})
 
-	test.skip("sale NFT with eurTZ", async () => {
+	test("sale NFT with eurTZ", async () => {
 		const mintAndSellAction = await sellerSdk.nft.mintAndSell({
-			collectionId: toContractAddress(`TEZOS:${nftContract}`),
+			collectionId: toCollectionId(`TEZOS:${nftContract}`),
 		})
 
 		const mintResult = await mintAndSellAction.submit({
-			price: new BigNumber("0.0001"),
+			price: "0.0001",
 			currency: {
 				"@type": "TEZOS_FT",
 				contract: toContractAddress(
 					`TEZOS:${eurTzContract}`
 				),
-				tokenId: toBigNumber("0"),
+				// tokenId: toBigNumber("0"),
 			},
 			uri: "ipfs://bafkreiaz7n5zj2qvtwmqnahz7rwt5h37ywqu7znruiyhwuav3rbbxzert4",
 			supply: 1,
 			lazyMint: false,
 		})
-
 		const fillResponse = await buyerSdk.order.buy({ orderId: mintResult.orderId })
 
 		const fillResult = await fillResponse.submit({
@@ -133,7 +133,7 @@ describe("test tezos mint and sell", () => {
 
 	test.skip("sale MT with XTZ", async () => {
 		const mintAndSellAction = await sellerSdk.nft.mintAndSell({
-			collectionId: toContractAddress(`TEZOS:${mtContract}`),
+			collectionId: toCollectionId(`TEZOS:${mtContract}`),
 		})
 
 		const mintResult = await mintAndSellAction.submit({
@@ -167,7 +167,7 @@ describe("test tezos mint and sell", () => {
 		const itemCreatorAddress = await sellerWallet.provider.address()
 
 		const mintAndSellAction = await sellerSdk.nft.mintAndSell({
-			collectionId: toContractAddress(`TEZOS:${mtContract}`),
+			collectionId: toCollectionId(`TEZOS:${mtContract}`),
 		})
 
 		const mintResult = await mintAndSellAction.submit({
@@ -237,13 +237,13 @@ describe("test tezos mint and sell", () => {
 		expect(creatorRoyalty.eq(new BigNumber("0.1"))).toBeTruthy()
 	})
 
-	test.skip("sale MT with eurTZ", async () => {
+	test("sale MT with eurTZ", async () => {
 		const mintAndSellAction = await sellerSdk.nft.mintAndSell({
-			collectionId: toContractAddress(`TEZOS:${mtContract}`),
+			collectionId: toCollectionId(`TEZOS:${mtContract}`),
 		})
 
 		const mintResult = await mintAndSellAction.submit({
-			price: new BigNumber("0.0001"),
+			price: new BigNumber("0.1"),
 			currency: {
 				"@type": "TEZOS_FT",
 				contract: toContractAddress(

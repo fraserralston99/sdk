@@ -3,6 +3,7 @@ import type { Fcl } from "@rarible/fcl-types"
 import { BlockchainGroup } from "@rarible/api-client"
 import type { TezosProvider } from "@rarible/tezos-sdk"
 import type { Link } from "@imtbl/imx-sdk"
+import type { SolanaWalletProvider } from "@rarible/solana-wallet"
 import type { AbstractWallet, UserSignature } from "./domain"
 
 export class EthereumWallet<T extends Ethereum = Ethereum> implements AbstractWallet {
@@ -98,6 +99,30 @@ export class TezosWallet implements AbstractWallet {
 	}
 }
 
+export class SolanaWallet implements AbstractWallet {
+	readonly blockchain = BlockchainGroup.SOLANA
+
+	constructor(public readonly provider: SolanaWalletProvider) {
+	}
+
+	async signPersonalMessage(message: string): Promise<UserSignature> {
+		const data = new TextEncoder().encode(message)
+		const res = await this.provider.signMessage(data, "utf8")
+
+		if (res.signature) { // phantom wallet response
+			return {
+				signature: Buffer.from(res.signature).toString("hex"),
+				publicKey: res.publicKey.toString(),
+			}
+		} else { // solflare wallet response
+			return {
+				signature: Buffer.from(res).toString("hex"),
+				publicKey: this.provider.publicKey.toString(),
+			}
+		}
+	}
+}
+
 export class ImmutableXWallet implements AbstractWallet {
 	readonly blockchain = "IMMUTABLE" //todo import enum from item
 
@@ -124,10 +149,12 @@ export class ImmutableXWallet implements AbstractWallet {
 export type BlockchainWallet =
 	EthereumWallet |
 	FlowWallet |
-	TezosWallet
+	TezosWallet |
+	SolanaWallet
 
 export type WalletByBlockchain = {
 	"FLOW": FlowWallet
 	"ETHEREUM": EthereumWallet,
 	"TEZOS": TezosWallet
+	"SOLANA": SolanaWallet
 }

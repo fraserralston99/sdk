@@ -6,5 +6,6 @@ export const e2eConfig: RaribleSdkConfig = {
 	flowEnv: "dev",
 	tezosNetwork: "hangzhou",
 	polygonNetwork: "e2e",
+	solanaNetwork: "devnet",
 	immutableXNetwork: "e2e",
 }

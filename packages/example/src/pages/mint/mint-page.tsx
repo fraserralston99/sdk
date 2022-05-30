@@ -14,7 +14,7 @@ import { UnsupportedBlockchainWarning } from "../../components/common/unsupporte
 import { BlockchainGroup } from "@rarible/api-client"
 import { ConnectorContext } from "../../components/connector/sdk-connection-provider"
 
-function validateConditions(blockchain: BlockchainGroup | undefined): boolean {
+function validateConditions(blockchain: BlockchainGroup | "IMMUTABLE" | undefined): boolean {
 	return !!blockchain
 }
 
@@ -41,7 +41,7 @@ export function MintPage() {
 									onComplete={onComplete}
 									disabled={!validateConditions(blockchain)}
 								/>
-							}
+							},
 						},
 						{
 							label: "Send Transaction",
@@ -51,13 +51,16 @@ export function MintPage() {
 									prepare={lastResponse}
 									disabled={!validateConditions(blockchain)}
 								/>
-							}
+							},
 						},
 						{
 							label: "Done",
 							render: (onComplete, lastResponse) => {
 								return <RequestResult
-									result={{ type: "complete", data: lastResponse }}
+									result={{
+										type: "complete",
+										data: lastResponse,
+									}}
 									completeRender={(data) =>
 										<>
 											<Box sx={{ my: 2 }}>
@@ -74,15 +77,15 @@ export function MintPage() {
 											</Box>
 											{
 												data.type === "on-chain" &&
-                          <Box sx={{ my: 2 }}>
-                              <TransactionInfo transaction={data.transaction}/>
-                          </Box>
+                        <Box sx={{ my: 2 }}>
+                          <TransactionInfo transaction={data.transaction}/>
+                        </Box>
 											}
 										</>
 									}
 								/>
-							}
-						}
+							},
+						},
 					]}
 				/>
 			</CommentedBlock>

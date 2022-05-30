@@ -3,11 +3,14 @@ import { BlockchainGroup } from "@rarible/api-client"
 import { Alert, AlertTitle } from "@mui/material"
 
 interface IUnsupportedBlockchainWarningProps {
-	blockchain: BlockchainGroup | undefined
+	blockchain: BlockchainGroup | "IMMUTABLE" | undefined
 	message?: string
 }
 
-export function UnsupportedBlockchainWarning({ blockchain, message }: IUnsupportedBlockchainWarningProps) {
+export function UnsupportedBlockchainWarning({
+																							 blockchain,
+																							 message,
+																						 }: IUnsupportedBlockchainWarningProps) {
 	return <Alert severity="warning">
 		<AlertTitle>
 			{

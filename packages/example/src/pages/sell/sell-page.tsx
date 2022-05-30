@@ -14,7 +14,7 @@ import { UnsupportedBlockchainWarning } from "../../components/common/unsupporte
 import { BlockchainGroup } from "@rarible/api-client"
 import { ConnectorContext } from "../../components/connector/sdk-connection-provider"
 
-function validateConditions(blockchain: BlockchainGroup | undefined): boolean {
+function validateConditions(blockchain: BlockchainGroup | "IMMUTABLE" | undefined): boolean {
 	return !!blockchain
 }
 
@@ -43,7 +43,7 @@ export function SellPage() {
 									disabled={!validateConditions(blockchain)}
 									itemId={params.itemId}
 								/>
-							}
+							},
 						},
 						{
 							label: "Send Transaction",
@@ -53,13 +53,16 @@ export function SellPage() {
 									prepare={lastResponse}
 									disabled={!validateConditions(blockchain)}
 								/>
-							}
+							},
 						},
 						{
 							label: "Done",
 							render: (onComplete, lastResponse) => {
 								return <RequestResult
-									result={{ type: "complete", data: lastResponse }}
+									result={{
+										type: "complete",
+										data: lastResponse,
+									}}
 									completeRender={(data) =>
 										<>
 											<Box sx={{ my: 2 }}>
@@ -71,8 +74,8 @@ export function SellPage() {
 										</>
 									}
 								/>
-							}
-						}
+							},
+						},
 					]}
 				/>
 			</CommentedBlock>

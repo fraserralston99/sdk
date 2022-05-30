@@ -47,7 +47,11 @@ export class ImxConnectionProvider extends AbstractConnectionProvider<typeof PRO
 		}
 		return defer(async () => link.setup({})).pipe(
 			map(auth => {
-				const address = auth.address
+				const {
+					address,
+					starkPublicKey,
+					ethNetwork,
+				} = auth
 				if (!address) {
 					return getStateDisconnected()
 				}
@@ -55,6 +59,8 @@ export class ImxConnectionProvider extends AbstractConnectionProvider<typeof PRO
 					connection: {
 						link,
 						address,
+						starkPublicKey,
+						ethNetwork,
 					},
 					disconnect,
 				})
@@ -66,8 +72,11 @@ export class ImxConnectionProvider extends AbstractConnectionProvider<typeof PRO
 		return PROVIDER_ID
 	}
 
-	getFrom(): string {
-		return this.address
+	getFrom(): { address: string, starkPublicKey: string } {
+		return {
+			address: this.address,
+			starkPublicKey: this.starkPublicKey,
+		}
 	}
 
 	getConnection(): Observable<ConnectionState<ImxProviderConnectionResult>> {
@@ -80,7 +89,7 @@ export class ImxConnectionProvider extends AbstractConnectionProvider<typeof PRO
 		const {
 			address,
 			starkPublicKey,
-		} = await (link).setup({})
+		} = await link.setup({})
 		this.address = address
 		this.starkPublicKey = starkPublicKey
 		return link

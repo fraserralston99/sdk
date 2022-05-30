@@ -13,7 +13,7 @@ import { TransactionInfo } from "../../components/common/transaction-info"
 import { UnsupportedBlockchainWarning } from "../../components/common/unsupported-blockchain-warning"
 import { ConnectorContext } from "../../components/connector/sdk-connection-provider"
 
-function validateConditions(blockchain: BlockchainGroup | undefined): boolean {
+function validateConditions(blockchain: BlockchainGroup | "IMMUTABLE" | undefined): boolean {
 	return !!blockchain
 }
 
@@ -42,7 +42,7 @@ export function AcceptBidPage() {
 									disabled={!validateConditions(blockchain)}
 									orderId={params.orderId}
 								/>
-							}
+							},
 						},
 						{
 							label: "Send Transaction",
@@ -52,21 +52,24 @@ export function AcceptBidPage() {
 									prepare={lastResponse}
 									disabled={!validateConditions(blockchain)}
 								/>
-							}
+							},
 						},
 						{
 							label: "Done",
 							render: (onComplete, lastResponse) => {
 								return <RequestResult
-									result={{ type: "complete", data: lastResponse }}
+									result={{
+										type: "complete",
+										data: lastResponse,
+									}}
 									completeRender={(data) =>
 										<Box sx={{ my: 2 }}>
 											<TransactionInfo transaction={data}/>
 										</Box>
 									}
 								/>
-							}
-						}
+							},
+						},
 					]}
 				/>
 			</CommentedBlock>

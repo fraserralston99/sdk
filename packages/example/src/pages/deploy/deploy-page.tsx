@@ -61,7 +61,7 @@ function getDeployRequest(data: Record<string, any>) {
 	}
 }
 
-function validateConditions(blockchain: BlockchainGroup | undefined): boolean {
+function validateConditions(blockchain: BlockchainGroup | "IMMUTABLE" | undefined): boolean {
 	return blockchain === BlockchainGroup.ETHEREUM ||
 		blockchain === BlockchainGroup.TEZOS ||
 		blockchain === BlockchainGroup.SOLANA
@@ -71,7 +71,11 @@ export function DeployPage() {
 	const connection = useContext(ConnectorContext)
 	const form = useForm()
 	const { handleSubmit } = form
-	const { result, setComplete, setError } = useRequestResult()
+	const {
+		result,
+		setComplete,
+		setError,
+	} = useRequestResult()
 	const blockchain = connection.sdk?.wallet?.blockchain
 
 	return (
@@ -96,19 +100,19 @@ export function DeployPage() {
 					<Stack spacing={2}>
 						{
 							blockchain &&
-							<FormSelect
-								form={form}
-								defaultValue={blockchain}
-								name="blockchain"
-								label="Blockchain"
-							>
-								<MenuItem value={BlockchainGroup.ETHEREUM}>
+              <FormSelect
+                form={form}
+                defaultValue={blockchain}
+                name="blockchain"
+                label="Blockchain"
+              >
+                <MenuItem value={BlockchainGroup.ETHEREUM}>
 									{Blockchain.ETHEREUM} / {Blockchain.POLYGON}
-								</MenuItem>
-								<MenuItem value={BlockchainGroup.TEZOS}>{BlockchainGroup.TEZOS}</MenuItem>
-								<MenuItem value={Blockchain.SOLANA}>{Blockchain.SOLANA}</MenuItem>
-								{ /*<MenuItem value={Blockchain.FLOW}>{Blockchain.FLOW}</MenuItem>*/ }
-							</FormSelect>
+                </MenuItem>
+                <MenuItem value={BlockchainGroup.TEZOS}>{BlockchainGroup.TEZOS}</MenuItem>
+                <MenuItem value={Blockchain.SOLANA}>{Blockchain.SOLANA}</MenuItem>
+								{ /*<MenuItem value={Blockchain.FLOW}>{Blockchain.FLOW}</MenuItem>*/}
+              </FormSelect>
 						}
 						<DeployForm form={form}/>
 						<Box>

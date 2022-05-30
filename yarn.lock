@@ -2433,7 +2433,54 @@
     moment "^2.29.1"
     winston "^3.3.3"
 
-"@imtbl/imx-sdk@^1.14.1", "@imtbl/imx-sdk@~1.15.0":
+"@imtbl/imx-sdk@^1.19.0":
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/@imtbl/imx-sdk/-/imx-sdk-1.20.0.tgz#c3708c3a5f76b1107a90f3964b288f812e12017e"
+  integrity sha512-YRbnSlTnKvYWOOVTOqLmLZZtm5sa80AyDUajLfGloApiRVu7l9M00D5dr/tfSnFmelk+Misg1p2MUT7aXUuwKw==
+  dependencies:
+    "@ethersproject/abstract-signer" "^5.6.0"
+    "@ethersproject/address" "^5.6.0"
+    "@ethersproject/bignumber" "^5.6.0"
+    "@ethersproject/bytes" "^5.6.0"
+    "@ethersproject/contracts" "^5.6.0"
+    "@ethersproject/experimental" "^5.6.0"
+    "@ethersproject/keccak256" "^5.6.0"
+    "@ethersproject/providers" "^5.6.0"
+    "@ethersproject/signing-key" "^5.6.0"
+    "@ethersproject/solidity" "^5.6.0"
+    "@ethersproject/strings" "^5.6.0"
+    "@ethersproject/units" "^5.6.0"
+    "@imtbl/imlogging" "^1.0.36"
+    "@imtbl/imx-walletconnect-qrcode-modal" "^1.0.0"
+    "@walletconnect/types" "^1.7.7"
+    "@walletconnect/web3-provider" "^1.7.7"
+    auto-bind "^4.0.0"
+    axios "^0.21.1"
+    axios-retry "^3.2.4"
+    bignumber.js "^9.0.1"
+    bitwise "^2.1.0"
+    bn.js "^5.2.0"
+    elliptic "^6.5.3"
+    enc-utils "^3.0.0"
+    ethereumjs-wallet "^1.0.1"
+    ethers "^5.4.4"
+    fp-ts "2.9.3"
+    fp-ts-std "^0.5.2"
+    hash.js "^1.1.7"
+    io-ts "2.2.13"
+    io-ts-reporters "^1.2.2"
+    io-ts-types "^0.5.16"
+    magic-sdk "^7.0.0"
+    monocle-ts "^2.3.11"
+    newtype-ts "^0.3.4"
+    qs "^6.10.1"
+    query-string "^7.0.1"
+    rxjs "^6.6.3"
+    soltypes "^1.3.5"
+    ws "^7.3.1"
+    yalc "^1.0.0-pre.53"
+
+"@imtbl/imx-sdk@~1.15.0":
   version "1.15.0"
   resolved "https://registry.yarnpkg.com/@imtbl/imx-sdk/-/imx-sdk-1.15.0.tgz#1445b0bccedbd983d958380ca3c68a81b03b9826"
   integrity sha512-GQk1SZGqCoHHU0SI6dRZ13wqOk0Yepd3gtDjfb6eS683zb6vONbEybWWXMvzhfrzdD+KTIIeKdN4jLpx/vYzrw==
@@ -2478,6 +2525,64 @@
     soltypes "^1.3.5"
     ws "^7.3.1"
     yalc "^1.0.0-pre.53"
+
+"@imtbl/imx-sdk@~1.19.0":
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/@imtbl/imx-sdk/-/imx-sdk-1.19.0.tgz#20b7e5bc495cc3adf3201d53a19492bf5ce0c478"
+  integrity sha512-byRg5UWi4cq6VqRfdukF+XYuUsRm5oAyeAC+zDrirf7VLK+2rRwzVwXKCX0HLNpHI6yvNs/Mul/YSbKxvuKxnQ==
+  dependencies:
+    "@ethersproject/abstract-signer" "^5.6.0"
+    "@ethersproject/address" "^5.6.0"
+    "@ethersproject/bignumber" "^5.6.0"
+    "@ethersproject/bytes" "^5.6.0"
+    "@ethersproject/contracts" "^5.6.0"
+    "@ethersproject/experimental" "^5.6.0"
+    "@ethersproject/keccak256" "^5.6.0"
+    "@ethersproject/providers" "^5.6.0"
+    "@ethersproject/signing-key" "^5.6.0"
+    "@ethersproject/solidity" "^5.6.0"
+    "@ethersproject/strings" "^5.6.0"
+    "@ethersproject/units" "^5.6.0"
+    "@imtbl/imlogging" "^1.0.36"
+    "@walletconnect/types" "^1.7.7"
+    "@walletconnect/web3-provider" "^1.7.7"
+    auto-bind "^4.0.0"
+    axios "^0.21.1"
+    axios-retry "^3.2.4"
+    bignumber.js "^9.0.1"
+    bitwise "^2.1.0"
+    bn.js "^5.2.0"
+    elliptic "^6.5.3"
+    enc-utils "^3.0.0"
+    ethereumjs-wallet "^1.0.1"
+    ethers "^5.4.4"
+    fp-ts "2.9.3"
+    fp-ts-std "^0.5.2"
+    hash.js "^1.1.7"
+    io-ts "2.2.13"
+    io-ts-reporters "^1.2.2"
+    io-ts-types "^0.5.16"
+    magic-sdk "^7.0.0"
+    monocle-ts "^2.3.11"
+    newtype-ts "^0.3.4"
+    qs "^6.10.1"
+    query-string "^7.0.1"
+    rxjs "^6.6.3"
+    soltypes "^1.3.5"
+    ws "^7.3.1"
+    yalc "^1.0.0-pre.53"
+
+"@imtbl/imx-walletconnect-qrcode-modal@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@imtbl/imx-walletconnect-qrcode-modal/-/imx-walletconnect-qrcode-modal-1.0.0.tgz#ca7d0c69da299336ea45c4feddf9490cd84f8fc3"
+  integrity sha512-rDZzH5L2aM3hjphpYxLC0gHGmJ9gj9PGPn5qAxvBaNJ2g18xguipwbeWuVmD3yVhzMKrrMMti+iXLogB/D+ogw==
+  dependencies:
+    "@walletconnect/browser-utils" "^1.7.5"
+    "@walletconnect/mobile-registry" "^1.4.0"
+    "@walletconnect/types" "^1.7.5"
+    copy-to-clipboard "^3.3.1"
+    preact "10.4.1"
+    qrcode "1.4.4"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
@@ -4389,7 +4494,7 @@
     eslint-plugin-jest "^25.2.3"
     eslint-plugin-unicorn "^38.0.0"
 
-"@rarible/ethereum-api-client@^0.1.20", "@rarible/ethereum-api-client@^0.1.21":
+"@rarible/ethereum-api-client@^0.1.21", "@rarible/ethereum-api-client@~0.1.21":
   version "0.1.21"
   resolved "https://registry.yarnpkg.com/@rarible/ethereum-api-client/-/ethereum-api-client-0.1.21.tgz#23aba5e639255f7626c3ca77e5fed6ffe5a6f08c"
   integrity sha512-qE6i/jf7L9NdXI2ipdTnP9XlynhhWSG4n+gUox+zza4E82Agn1uHvZZOtAB0kcl9YRL2vDrjfUeG2WHqulAvbw==
@@ -4466,16 +4571,30 @@
     flow-js-testing "~0.1.13"
     sha3 "^2.1.4"
 
-"@rarible/immutable-sdk@~0.0.3-alpha.12":
-  version "0.0.3-alpha.12"
-  resolved "https://registry.yarnpkg.com/@rarible/immutable-sdk/-/immutable-sdk-0.0.3-alpha.12.tgz#3d932effc98f9625358e0ecac82d60a877d6785f"
-  integrity sha512-hVM/Y5lUbJE5rw2ifeqMpL0Y9fllEhYgbkpuRnYX8gFqyllwYnR4vbQJ5v+HSvB48JipYofi7zAYdmDRhj942w==
+"@rarible/immutable-sdk@~0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@rarible/immutable-sdk/-/immutable-sdk-0.0.4.tgz#5fc4d72b37d80dc84813915d77ffbfc5a7c1e212"
+  integrity sha512-wWZVyQ3LrttXCzogpZmqV8yoATuQyHTyYwSUYxibEqChrcmCi0MPaQ7aPP5LQq8SQGi3omUeUo1jW3viJjb5Rg==
   dependencies:
     "@ethersproject/providers" "~5.6.1"
     "@ethersproject/wallet" "~5.6.0"
-    "@imtbl/imx-sdk" "^1.14.1"
-    "@rarible/ethereum-api-client" "^0.1.20"
-    "@rarible/types" "~0.8.0"
+    "@imtbl/imx-sdk" "^1.19.0"
+    "@rarible/ethereum-api-client" "~0.1.21"
+    "@rarible/immutable-wallet" "^0.0.4"
+
+"@rarible/immutable-wallet@^0.0.4", "@rarible/immutable-wallet@~0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@rarible/immutable-wallet/-/immutable-wallet-0.0.4.tgz#bb9b1bbd9760c8ac958400d41cfa3e44112c884b"
+  integrity sha512-T2SnnpTwfyqFn9vqW/8H5C3a7mm+adi0P6BYgzCEO3J4Bak51nuJOpExSiOCbvJYVtXclAdG+2lMBqW0MQCvNA==
+  dependencies:
+    "@imtbl/imx-sdk" "~1.19.0"
+
+"@rarible/immutable-wallet@~0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@rarible/immutable-wallet/-/immutable-wallet-0.0.6.tgz#ce7863cbaac62b11ab5aedfcf476dada3204a6e6"
+  integrity sha512-djPTQAooqZ/iHU0hE28MFB3Y5g+IQVDabR3O9OYuQmSKHyQUIqcjBrF8LfOUE/dWRbzx6q6NLg7S5hd13okj7Q==
+  dependencies:
+    "@imtbl/imx-sdk" "~1.19.0"
 
 "@rarible/logger@~0.6.2":
   version "0.6.2"
@@ -4557,11 +4676,6 @@
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@rarible/types/-/types-0.5.3.tgz#7d341eba51cb05927b7744cbfb08d7cd68ebcb6e"
   integrity sha512-ZjrJvg4iVIxatBRnUPcwWzaQRf7XN4hgjrRHqmjXv2Q+8/2vYyPL1TBFlfGunPPDMUB3hwBELaL5ZQaJsSE6oQ==
-
-"@rarible/types@~0.8.0":
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/@rarible/types/-/types-0.8.3.tgz#dea65968ec1dfec4572c1a9f099232f322c198de"
-  integrity sha512-i/aUCFF6TGDz7hPLDehGFSVIizW9cs7v2PWnzbgDegWc4w/HkWr26JfR/28PFl8/NiXCME8ES/RHEOjE4KkmLA==
 
 "@rarible/types@~0.9.2", "@rarible/types@~0.9.3":
   version "0.9.3"
@@ -6033,6 +6147,17 @@
     "@typescript-eslint/types" "5.21.0"
     eslint-visitor-keys "^3.0.0"
 
+"@walletconnect/browser-utils@^1.7.5", "@walletconnect/browser-utils@^1.7.8":
+  version "1.7.8"
+  resolved "https://registry.yarnpkg.com/@walletconnect/browser-utils/-/browser-utils-1.7.8.tgz#c9e27f69d838442d69ccf53cb38ffc3c554baee2"
+  integrity sha512-iCL0XCWOZaABIc0lqA79Vyaybr3z26nt8mxiwvfrG8oaKUf5Y21Of4dj+wIXQ4Hhblre6SgDlU0Ffb39+1THOw==
+  dependencies:
+    "@walletconnect/safe-json" "1.0.0"
+    "@walletconnect/types" "^1.7.8"
+    "@walletconnect/window-getters" "1.0.0"
+    "@walletconnect/window-metadata" "1.0.0"
+    detect-browser "5.2.0"
+
 "@walletconnect/browser-utils@^1.7.7":
   version "1.7.7"
   resolved "https://registry.yarnpkg.com/@walletconnect/browser-utils/-/browser-utils-1.7.7.tgz#4ae0db1ddf49be179ea556af842db3b7afce973d"
@@ -6040,17 +6165,6 @@
   dependencies:
     "@walletconnect/safe-json" "1.0.0"
     "@walletconnect/types" "^1.7.7"
-    "@walletconnect/window-getters" "1.0.0"
-    "@walletconnect/window-metadata" "1.0.0"
-    detect-browser "5.2.0"
-
-"@walletconnect/browser-utils@^1.7.8":
-  version "1.7.8"
-  resolved "https://registry.yarnpkg.com/@walletconnect/browser-utils/-/browser-utils-1.7.8.tgz#c9e27f69d838442d69ccf53cb38ffc3c554baee2"
-  integrity sha512-iCL0XCWOZaABIc0lqA79Vyaybr3z26nt8mxiwvfrG8oaKUf5Y21Of4dj+wIXQ4Hhblre6SgDlU0Ffb39+1THOw==
-  dependencies:
-    "@walletconnect/safe-json" "1.0.0"
-    "@walletconnect/types" "^1.7.8"
     "@walletconnect/window-getters" "1.0.0"
     "@walletconnect/window-metadata" "1.0.0"
     detect-browser "5.2.0"
@@ -6231,15 +6345,15 @@
     "@walletconnect/utils" "^1.7.8"
     ws "7.5.3"
 
+"@walletconnect/types@^1.7.5", "@walletconnect/types@^1.7.8":
+  version "1.7.8"
+  resolved "https://registry.yarnpkg.com/@walletconnect/types/-/types-1.7.8.tgz#ec397e6fbdc8147bccc17029edfeb41c50a5ca09"
+  integrity sha512-0oSZhKIrtXRJVP1jQ0EDTRtotQY6kggGjDcmm/LLQBKnOZXdPeo0sPkV/7DjT5plT3O7Cjc6JvuXt9WOY0hlCA==
+
 "@walletconnect/types@^1.7.7":
   version "1.7.7"
   resolved "https://registry.yarnpkg.com/@walletconnect/types/-/types-1.7.7.tgz#71c623b36a93e373370b1772e82fea2d801adf54"
   integrity sha512-yXJrLxwLLCXtWgd/e8FjfY9v5DKds12Z7EEPzUrPSq6v7WtXpqate577KwlFQ6UYzioQzIEDE8+98j+0aiZbsw==
-
-"@walletconnect/types@^1.7.8":
-  version "1.7.8"
-  resolved "https://registry.yarnpkg.com/@walletconnect/types/-/types-1.7.8.tgz#ec397e6fbdc8147bccc17029edfeb41c50a5ca09"
-  integrity sha512-0oSZhKIrtXRJVP1jQ0EDTRtotQY6kggGjDcmm/LLQBKnOZXdPeo0sPkV/7DjT5plT3O7Cjc6JvuXt9WOY0hlCA==
 
 "@walletconnect/utils@^1.7.7":
   version "1.7.7"

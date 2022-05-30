@@ -1,24 +1,28 @@
 import type { Maybe } from "@rarible/types/build/maybe"
-import type { RaribleImxEnv } from "@rarible/immutable-sdk/build/config/domain"
 import type { ImmutableXWallet } from "@rarible/sdk-wallet/src"
-import { createImxSdk } from "@rarible/immutable-sdk"
+import { createImxSdk, IMX_ENV_CONFIG } from "@rarible/immutable-sdk"
+import type { ImxEnv } from "@rarible/immutable-wallet"
 import type { IApisSdk, IRaribleInternalSdk } from "../../domain"
 import type { CanTransferResult } from "../../types/nft/restriction/domain"
 import { notImplemented } from "../../common/not-implemented"
+import { ImxBurn } from "./burn"
+import { ImxTransfer } from "./transfer"
 
 export function createImmutableXSdk(
 	wallet: Maybe<ImmutableXWallet>,
 	apis: IApisSdk,
-	network: RaribleImxEnv,
+	network: ImxEnv,
 ): IRaribleInternalSdk {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const sdk = createImxSdk(wallet?.provider as any, network)
+	const imxEnv = IMX_ENV_CONFIG[network].network
+	const sdk = createImxSdk(wallet as any)
+	const { burn } = new ImxBurn(sdk, imxEnv)
+	const { transfer } = new ImxTransfer(sdk, apis, imxEnv)
 
 	return {
 		nft: {
-			transfer: notImplemented,
+			transfer,
 			mint: notImplemented,
-			burn: notImplemented,
+			burn,
 			generateTokenId: notImplemented,
 			deploy: notImplemented(),
 			createCollection: notImplemented(),

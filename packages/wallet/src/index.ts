@@ -124,24 +124,20 @@ export class SolanaWallet implements AbstractWallet {
 }
 
 export class ImmutableXWallet implements AbstractWallet {
-	readonly blockchain = "IMMUTABLE" //todo import enum from item
+	readonly blockchain = "IMMUTABLE" //todo import enum from api package
 
-	constructor(public readonly provider: Link) {
+	//todo replace link with wallet that implements .getFrom()
+	constructor(public readonly link: Link, public readonly address: string) {
 	}
 
-	async signPersonalMessage(message: string): Promise<UserSignature> {
-		const publicKey = ""//await this.provider.getPublicKey()
-		if (publicKey === undefined) {
-			throw new Error("Public key undefined")
-		}
-
-		const { result } = await this.provider.sign({
+	async signPersonalMessage(message: string) {
+		const signature = await this.link.sign({
 			message,
 			description: message,
 		})
 		return {
-			signature: result,
-			publicKey,
+			signature: signature.result,
+			publicKey: this.address,
 		}
 	}
 }
@@ -150,11 +146,13 @@ export type BlockchainWallet =
 	EthereumWallet |
 	FlowWallet |
 	TezosWallet |
-	SolanaWallet
+	SolanaWallet |
+	ImmutableXWallet
 
 export type WalletByBlockchain = {
 	"FLOW": FlowWallet
-	"ETHEREUM": EthereumWallet,
+	"ETHEREUM": EthereumWallet
 	"TEZOS": TezosWallet
 	"SOLANA": SolanaWallet
+	"IMMUTABLE": ImmutableXWallet
 }

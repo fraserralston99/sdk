@@ -1,0 +1,13 @@
+import type { IRaribleSdk } from "@rarible/sdk/src/domain";
+import type { Collection } from "@rarible/api-client/build/models";
+import type { Blockchain, GetAllCollectionsResponse, GetCollectionByIdResponse, GetCollectionsByOwnerResponse } from "@rarible/api-client";
+import type { Collections } from "@rarible/api-client/build/models";
+export declare function getCollectionById(sdk: IRaribleSdk, collectionId: string): Promise<Collection>;
+export declare function getCollectionByIdRaw(sdk: IRaribleSdk, collectionId: string): Promise<GetCollectionByIdResponse>;
+export declare function getAllCollections(sdk: IRaribleSdk, blockchains: Array<Blockchain>, size: number): Promise<Collections>;
+export declare function getAllCollectionsRaw(sdk: IRaribleSdk, blockchains: Array<Blockchain>, size: number): Promise<GetAllCollectionsResponse>;
+export declare function getCollectionsByOwner(sdk: IRaribleSdk, owner: string, size: number): Promise<Collections>;
+export declare function getCollectionsByOwnerRaw(sdk: IRaribleSdk, owner: string, size: number): Promise<GetCollectionsByOwnerResponse>;
+export declare function verifyCollectionsByBlockchain(collections: Collections, blockchain: Blockchain): Promise<void>;
+export declare function verifyCollectionsContainsCollection(collections: Collections, collectionId: string): Promise<void>;
+export declare function verifyCollectionsOwner(collections: Collections, owner: string): Promise<void>;

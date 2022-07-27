@@ -1,0 +1,32 @@
+import type { RaribleSdk } from "@rarible/protocol-ethereum-sdk";
+import type { ContractAddress } from "@rarible/types";
+import type * as ApiClient from "@rarible/api-client";
+import type { AssetType as EthereumAssetType } from "@rarible/ethereum-api-client/build/models/AssetType";
+import type { Maybe } from "@rarible/types/build/maybe";
+import type { EthereumWallet } from "@rarible/sdk-wallet";
+import type { EthereumNetwork } from "@rarible/protocol-ethereum-sdk/build/types";
+import type { BigNumberValue } from "@rarible/utils";
+import type * as OrderCommon from "../../types/order/common";
+import type { GetConvertableValueResult, PrepareBidRequest, PrepareBidResponse, PrepareBidUpdateResponse } from "../../types/order/bid/domain";
+import type { RequestCurrencyAssetType } from "../../common/domain";
+import type { EthereumBalance } from "./balance";
+import type { IEthereumSdkConfig } from "./domain";
+export declare class EthereumBid {
+    private sdk;
+    private wallet;
+    private balanceService;
+    private network;
+    private config?;
+    private readonly blockchain;
+    constructor(sdk: RaribleSdk, wallet: Maybe<EthereumWallet>, balanceService: EthereumBalance, network: EthereumNetwork, config?: IEthereumSdkConfig | undefined);
+    convertAssetType(assetType: EthereumAssetType): ApiClient.AssetType;
+    getWethContractAddress(): ContractAddress;
+    bid(prepare: PrepareBidRequest): Promise<PrepareBidResponse>;
+    bidDataV2(prepare: PrepareBidRequest): Promise<PrepareBidResponse>;
+    bidDataV3(prepare: PrepareBidRequest): Promise<PrepareBidResponse>;
+    getConvertMap(): Record<ContractAddress, string>;
+    private getConvertableValue;
+    getConvertableValueCommon(assetType: RequestCurrencyAssetType, price: BigNumberValue, amount: number, originFeesSum: number): Promise<GetConvertableValueResult>;
+    convertCurrency(convertableValue: GetConvertableValueResult): Promise<void>;
+    update(prepareRequest: OrderCommon.PrepareOrderUpdateRequest): Promise<PrepareBidUpdateResponse>;
+}

@@ -1,0 +1,13 @@
+import type { Connection } from "@solana/web3.js";
+import { PublicKey, TransactionInstruction } from "@solana/web3.js";
+import type { Program } from "@project-serum/anchor";
+import type { AccountInfo } from "@solana/spl-token";
+import BigNumber from "bignumber.js";
+export declare function getTokenWallet(wallet: PublicKey, mint: PublicKey): Promise<PublicKey>;
+export declare function createAssociatedTokenAccountInstruction(associatedTokenAddress: PublicKey, payer: PublicKey, walletAddress: PublicKey, splTokenMintAddress: PublicKey): TransactionInstruction;
+export declare function getMetadata(mint: PublicKey): Promise<PublicKey>;
+export declare function getMasterEdition(mint: PublicKey): Promise<PublicKey>;
+export declare function getPriceWithMantissa(connection: Connection, price: BigNumber, mint: PublicKey, walletKeyPair: any): Promise<BigNumber>;
+export declare function getAccountInfo(connection: Connection, mint: PublicKey, walletKeyPair: any, tokenAccount: PublicKey): Promise<AccountInfo>;
+export declare function getAssociatedTokenAccountForMint(mint: PublicKey, publicKey: PublicKey): Promise<[PublicKey, number]>;
+export declare function getTokenAmount(connection: Connection, anchorProgram: Program, account: PublicKey, mint: PublicKey, integer?: boolean): Promise<BigNumber>;

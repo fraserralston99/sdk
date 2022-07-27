@@ -1,0 +1,13 @@
+import type { IRaribleSdk } from "@rarible/sdk/src/domain";
+import type { Activities, UserActivityType } from "@rarible/api-client/build/models";
+import type { GetActivitiesByCollectionResponse, GetActivitiesByItemResponse, GetActivitiesByUserResponse, GetAllActivitiesResponse } from "@rarible/api-client/build/apis/ActivityControllerApi";
+import type { Blockchain } from "@rarible/api-client";
+import type { ActivityType } from "@rarible/api-client";
+export declare function getActivitiesByCollection(sdk: IRaribleSdk, collection: string, activityTypes: Array<ActivityType>): Promise<Activities>;
+export declare function getActivitiesByCollectionRaw(sdk: IRaribleSdk, collection: string, activityTypes: Array<ActivityType>): Promise<GetActivitiesByCollectionResponse>;
+export declare function getActivitiesByItem(sdk: IRaribleSdk, itemId: string, activityTypes: Array<ActivityType>, shouldPresent?: Array<ActivityType>): Promise<Activities>;
+export declare function getActivitiesByItemRaw(sdk: IRaribleSdk, itemId: string, activityTypes: Array<ActivityType>): Promise<GetActivitiesByItemResponse>;
+export declare function getActivitiesByUser(sdk: IRaribleSdk, user: Array<string>, type: Array<UserActivityType>): Promise<Activities>;
+export declare function getActivitiesByUserRaw(sdk: IRaribleSdk, user: Array<string>, type: Array<UserActivityType>): Promise<GetActivitiesByUserResponse>;
+export declare function getAllActivities(sdk: IRaribleSdk, blockchains: Array<Blockchain>, type: Array<ActivityType>): Promise<Activities>;
+export declare function getAllActivitiesRaw(sdk: IRaribleSdk, blockchains: Array<Blockchain>, type: Array<ActivityType>): Promise<GetAllActivitiesResponse>;

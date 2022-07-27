@@ -1,0 +1,17 @@
+import type { IRaribleSdk } from "@rarible/sdk/src/domain";
+import type { Orders } from "@rarible/api-client/build/models";
+import type { BigNumber, ContractAddress } from "@rarible/types";
+import type { GetOrderBidsByItemResponse, GetOrdersAllResponse, GetSellOrdersByItemResponse, GetSellOrdersByMakerResponse, GetSellOrdersResponse } from "@rarible/api-client/build/apis/OrderControllerApi";
+import type { Blockchain } from "@rarible/api-client";
+export declare function getOrderBidsByItem(sdk: IRaribleSdk, contract: ContractAddress, tokenId: BigNumber, size: number): Promise<Orders>;
+export declare function getOrderBidsByItemRaw(sdk: IRaribleSdk, contract: ContractAddress, tokenId: BigNumber, size: number): Promise<GetOrderBidsByItemResponse>;
+export declare function getOrdersAll(sdk: IRaribleSdk, blockchains: Array<Blockchain>, size: number): Promise<Orders>;
+export declare function getOrdersAllRaw(sdk: IRaribleSdk, blockchains: Array<Blockchain>, size: number): Promise<GetOrdersAllResponse>;
+export declare function getOrdersByIds(sdk: IRaribleSdk, orderId: string): Promise<Orders>;
+export declare function getOrdersByIdsRaw(sdk: IRaribleSdk, orderId: string): Promise<GetSellOrdersResponse>;
+export declare function getSellOrders(sdk: IRaribleSdk, blockchains: Array<Blockchain>, size: number): Promise<Orders>;
+export declare function getSellOrdersRaw(sdk: IRaribleSdk, blockchains: Array<Blockchain>, size: number): Promise<GetSellOrdersResponse>;
+export declare function getSellOrdersByItem(sdk: IRaribleSdk, contract: ContractAddress, tokenId: BigNumber, size: number): Promise<Orders>;
+export declare function getSellOrdersByItemRaw(sdk: IRaribleSdk, contract: ContractAddress, tokenId: BigNumber, size: number): Promise<GetSellOrdersByItemResponse>;
+export declare function getSellOrdersByMaker(sdk: IRaribleSdk, maker: string, size: number): Promise<Orders>;
+export declare function getSellOrdersByMakerRaw(sdk: IRaribleSdk, maker: string, size: number): Promise<GetSellOrdersByMakerResponse>;
